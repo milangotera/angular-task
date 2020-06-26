@@ -1,1 +1,25 @@
-<p>log-in works!</p>
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Ingresa tu cuenta</mat-card-title>
+      </mat-card-header>
+  
+      <form class="example-form">
+        <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Correo">
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Clave">
+          </mat-form-field>
+        </mat-card-content>
+        <button mat-stroked-button color="accent" class="btn-block">Ingresar</button>
+        <br>
+        <br>
+        <a mat-button routerLink="/home" routerLinkActive="active" class="btn-block">Crear una cuenta</a>
+      </form>
+    </mat-card>
+  
+  </div>

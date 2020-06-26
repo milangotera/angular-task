@@ -1,0 +1,39 @@
+<div class="home-wrapper">
+
+    <mat-table [dataSource]="dataSource">
+
+        <ng-container matColumnDef="position">
+        <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef> Detalle </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="priority">
+        <mat-header-cell *matHeaderCellDef> Prioridad </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.priority}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="expires">
+        <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.expires}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef> Estatus </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+</div>
