@@ -1,27 +1,40 @@
-# AngularTask
+# Angular Task Manager
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.0.
+## Version
+- 1.0.0
 
-## Development server
+## Authors
+- Milan Gotera
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Requirements
 
-## Code scaffolding
+1.- Node JS and NPM
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2.- Preferred text editor
 
-## Build
+## Installation Instructions
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+1.- Clone the project:
+git clone https://github.com/milang90/angular-task.git
 
-## Running unit tests
+2.- Go to the directory created with:
+cd angular-task
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3.- Install dependencies:
+npm install
 
-## Running end-to-end tests
+4.- Set up your server in archive src/app/services/api-service.ts:
+var api = 'your access to server';
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+5.- Run server:
+ng server
 
-## Further help
+6.- You can now visit http://localhost:4200
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Related projects
+
+- Express Task (https://github.com/milang90/express-task)
+
+- Ionic Task (https://github.com/milang90/ionic-task)
+
+- Laravel Task (https://github.com/milang90/laravel-task-checked)
