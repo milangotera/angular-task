@@ -43,9 +43,6 @@ body {
 
 .home-wrapper {
 	margin: auto;
-	//margin-top: 50px;
-	//margin-bottom: 50px;
-	//max-width: 1000px;
 }
 
 .login-wrapper {
@@ -89,3 +86,21 @@ body {
 .login-wrapper .mat-form-field-appearance-legacy .mat-form-field-infix {
 	padding: 0.8375em 0;
 }
+
+.error-message {
+	color: #ff4081 !important;
+}
+
+@media (max-width: 600px) {
+	
+	.login-wrapper {
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+
+	body {
+		background: #FFFFFF;
+	}
+
+}
+

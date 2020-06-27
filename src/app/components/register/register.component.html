@@ -9,32 +9,54 @@
             <mat-card-content>
 
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Nombre">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput [(ngModel)]="formRegister.firstname" name="text" type="firstname">
+                    <mat-hint class="error-message" *ngIf="formError.firstname">{{formError.firstname}}</mat-hint>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Apellido">
+                    <mat-label>Apellido</mat-label>
+                    <input matInput [(ngModel)]="formRegister.lastname" name="text" type="lastname">
+                    <mat-hint class="error-message" *ngIf="formError.lastname">{{formError.lastname}}</mat-hint>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Telefono">
+                    <mat-label>Telefono</mat-label>
+                    <input matInput [(ngModel)]="formRegister.phone" name="text" type="phone">
+                    <mat-hint class="error-message" *ngIf="formError.phone">{{formError.phone}}</mat-hint>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Correo">
+                    <mat-label>Email</mat-label>
+                    <input matInput [(ngModel)]="formRegister.email" name="email" type="email">
+                    <mat-hint class="error-message" *ngIf="formError.email">{{formError.email}}</mat-hint>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Clave">
+                    <mat-label>Sexo</mat-label>
+                    <select matNativeControl name="sex" [(ngModel)]="formRegister.sex">
+                        <option value="volvo">Mujer</option>
+                        <option value="saab">Hombre</option>
+                    </select>
+                    <mat-hint class="error-message" *ngIf="formError.sex">{{formError.sex}}</mat-hint>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Repite clave">
+                    <mat-label>Clave</mat-label>
+                    <input matInput [(ngModel)]="formRegister.password" name="password" type="password">
+                    <mat-hint class="error-message" *ngIf="formError.password">{{formError.password}}</mat-hint>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Repite clave</mat-label>
+                    <input matInput [(ngModel)]="formRegister.password_repeat" name="password_repeat" type="password">
+                    <mat-hint class="error-message" *ngIf="formError.password_repeat">{{formError.password_repeat}}</mat-hint>
                 </mat-form-field>
 
             </mat-card-content>
 
-            <button mat-stroked-button color="accent" class="btn-block">Registrarme</button>
+            <button mat-button color="accent" class="btn-block" *ngIf="formError.message">{{ formError.message }}</button>
+            <button mat-stroked-button color="primary" class="btn-block" (click)="register()">Registrarme</button>
             <br>
             <br>
             <a mat-button routerLink="/login" routerLinkActive="active" class="btn-block">Tengo una cuenta</a>

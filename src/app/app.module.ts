@@ -13,6 +13,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 
+import { AuthGuardService } from './services/auth-guard.service';
+import { AuthService } from './services/auth.service';
+import { ApiService } from './services/api.service';
+
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,8 +34,13 @@ import { HomeComponent } from './components/home/home.component';
     FlexLayoutModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    AuthGuardService,
+    AuthService,
+    ApiService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

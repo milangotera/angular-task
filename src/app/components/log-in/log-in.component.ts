@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../services/api.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-log-in',
@@ -7,9 +9,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogInComponent implements OnInit {
 
-  constructor() { }
+  public formLogin : any = {
+    email: null,
+    password: null
+  };
+
+  public formError : any = {
+    email: null,
+    password: null,
+    message: null
+  };
+
+  constructor(
+    public api: ApiService,
+    public auth: AuthService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  login() {
+    this.formError = { email: null, password: null, message: null };
+    this.api.post('login', this.formLogin)
+    .then( (success: any) => {
+      console.log(success);
+      this.formError.message = success.message;
+      this.auth.login(success.data.profile, success.data.token);
+    }, (fail: any) => {
+      if(fail.status == 403) {
+        this.formError = fail.errors;
+      }
+      this.formError.message = fail.message;
+    });
   }
 
 }
