@@ -91,6 +91,25 @@ body {
 	color: #ff4081 !important;
 }
 
+.app-menu {
+	float: right;
+}
+
+.fill-space {
+	flex: 1 1 auto;
+}
+
+.app-add-fab {
+	z-index: 100;
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+}
+
+.mat-dialog-container {
+    background: #f1f1f1;
+}
+
 @media (max-width: 600px) {
 	
 	.login-wrapper {

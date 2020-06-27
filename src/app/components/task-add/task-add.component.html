@@ -1,0 +1,51 @@
+<div fxLayout="row" fxLayoutAlign="center center" style="min-width: 300px;">
+
+    <mat-card style="background: #ffffff; width: 100%;">
+
+      <form class="example-form">
+        <mat-card-content>
+
+            <mat-form-field class="example-full-width" style="width: 100%;">
+                <mat-label>Nombre</mat-label>
+                <input matInput [(ngModel)]="formTask.name" name="name" type="text">
+                <mat-hint class="error-message" *ngIf="formError.name">{{formError.name}}</mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width" style="width: 100%;">
+                <mat-label>Descrioci&oacute;n</mat-label>
+                <textarea matInput [(ngModel)]="formTask.description" name="description"></textarea>
+                <mat-hint class="error-message" *ngIf="formError.description">{{formError.description}}</mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width" style="width: 100%;">
+                <mat-label>Fecha</mat-label>
+                <input matInput [(ngModel)]="formTask.expires" name="expires" type="datetime-local">
+                <mat-hint class="error-message" *ngIf="formError.expires">{{formError.expires}}</mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width" style="width: 100%;">
+                <mat-label>Prioridad</mat-label>
+                <select matNativeControl name="priority" [(ngModel)]="formTask.priority">
+                    <option value="Baja">Baja</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Alta">Alta</option>
+                </select>
+                <mat-hint class="error-message" *ngIf="formError.priority">{{formError.priority}}</mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width" style="width: 100%;">
+                <mat-label>Estatus</mat-label>
+                <select matNativeControl name="status" [(ngModel)]="formTask.status">
+                    <option value="false">Pendiente</option>
+                    <option value="true">Hecho</option>
+                </select>
+                <mat-hint class="error-message" *ngIf="formError.status">{{formError.status}}</mat-hint>
+            </mat-form-field>
+
+        </mat-card-content>
+        <button mat-button color="accent" class="btn-block" *ngIf="formError.message" style="width: 100%;">{{ formError.message }}</button>
+        <button mat-stroked-button color="primary" class="btn-block" (click)="save()" style="width: 100%;">Guardar</button>
+      </form>
+    </mat-card>
+  
+  </div>

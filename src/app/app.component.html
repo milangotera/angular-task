@@ -1,7 +1,16 @@
 <mat-toolbar color="primary" class="app-header">
-  <div>
+  <span>
     <a href="https://github.com/milang90/angular-task" target="_blank" class="positronx">Angular Task</a>
-  </div>
+  </span>
+  <span class="fill-space"></span>
+  <span>
+    <button mat-stroked-button *ngIf="auth.checkAuthenticated()" (click)="auth.logout()">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">exit_to_app</mat-icon>
+    </button>
+    <button mat-stroked-button *ngIf="!auth.checkAuthenticated()" routerLink="/login" routerLinkActive="active">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+    </button>
+  </span>
 </mat-toolbar>
 
 <router-outlet></router-outlet>

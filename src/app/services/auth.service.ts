@@ -33,6 +33,7 @@ export class AuthService {
   }
  
   logout() {
+    this.authState.next(false);
     localStorage.removeItem('profile');
     localStorage.removeItem('token');
     this.router.navigate(['login']);

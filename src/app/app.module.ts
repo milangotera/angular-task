@@ -18,13 +18,15 @@ import { AuthService } from './services/auth.service';
 import { ApiService } from './services/api.service';
 
 import { HttpClientModule } from '@angular/common/http';
+import { TaskAddComponent } from './components/task-add/task-add.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    TaskAddComponent
   ],
   imports: [
     BrowserModule,

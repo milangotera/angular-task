@@ -1,11 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../services/api.service';
+import { MatDialog } from '@angular/material/dialog';
+import { TaskAddComponent } from '../task-add/task-add.component';
 
 export interface Task {
-  name: string;
+  id: String;
+  name: String;
   description: String;
   priority: String;
   expires: Number;
+  date: String;
   status: Boolean;
+  status_lavel: String
 }
 
 @Component({
@@ -15,16 +21,49 @@ export interface Task {
 })
 export class HomeComponent implements OnInit {
 
-  data: Task[] = [
-    { name: 'Tarea', description: 'Esto es una tarea', priority: 'Alta', expires: 87987987, status: false },
-  ];
+  displayedColumns: string[] = ['name', 'description', 'priority', 'date', 'status', 'id'];
+  dataSource: Task[] = [];
 
-  displayedColumns: string[] = ['name', 'description', 'priority', 'expires', 'status'];
-  dataSource = this.data;
+  milisecunds = new Date().getTime();
 
-  constructor() { }
+  date = new Date();
+
+  constructor(
+    public api: ApiService,
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
+    setTimeout(()=>{
+      this.listTask();
+    }, 1000);
+  }
+
+  listTask() {
+    this.api.get('task')
+    .then( (success: any) => {
+      let tasks : Task[] = [];
+      success.data.forEach(function (task) {
+        tasks.push({
+          id: task.id,
+          name: task.name,
+          description: task.description,
+          priority: task.priority,
+          expires: task.expires,
+          date: new Date(task.expires).toLocaleString(),
+          status_lavel: task.status ? 'Hecho' : 'Pendiente',
+          status: task.status,
+        });
+      }); 
+      this.dataSource = tasks;
+    });
+  }
+
+  showAdd(task = null) {
+    const dialogRef = this.dialog.open(TaskAddComponent, { data: task });
+    dialogRef.afterClosed().subscribe( result => {
+      this.listTask();
+    });
   }
 
 }
