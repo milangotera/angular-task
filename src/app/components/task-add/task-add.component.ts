@@ -108,6 +108,18 @@ export class TaskAddComponent implements OnInit {
     }
   }
 
+  delete() {
+    this.api.delete(`task/${this.formTask.id}`)
+    .then( (success: any) => {
+      this.close();
+    }, (fail: any) => {
+      if(fail.status == 403) {
+        this.formError = fail.errors;
+      }
+      this.formError.message = fail.message;
+    });
+  }
+
   close() {
     this.dialogRef.close();
   }

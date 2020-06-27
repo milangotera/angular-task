@@ -45,6 +45,9 @@
         </mat-card-content>
         <button mat-button color="accent" class="btn-block" *ngIf="formError.message" style="width: 100%;">{{ formError.message }}</button>
         <button mat-stroked-button color="primary" class="btn-block" (click)="save()" style="width: 100%;">Guardar</button>
+        <br>
+        <br>
+        <button mat-stroked-button color="warn" class="btn-block" (click)="delete()" style="width: 100%;" *ngIf="formTask.id">Eliminar</button>
       </form>
     </mat-card>
   
