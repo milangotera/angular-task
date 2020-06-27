@@ -1,37 +1,39 @@
 <div class="home-wrapper">
 
+    <mat-card *ngIf="notification" class="make-warn" style="margin: auto; width: 90%; margin-top: 20px; margin-bottom: 20px; text-align: center; border: solid 1px red; color: red;" color="warn">Tienes tareas que deben ser atendidas</mat-card>
+
     <mat-table [dataSource]="dataSource">
 
         <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef fxFlex="200px"> Nombre </mat-header-cell>
-        <mat-cell *matCellDef="let element" fxFlex="200px"> {{element.name}} </mat-cell>
+        <mat-cell *matCellDef="let element" fxFlex="200px" [ngClass]="{ 'make-warn': element.warn }"> {{element.name}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="description">
         <mat-header-cell *matHeaderCellDef> Detalle </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+        <mat-cell *matCellDef="let element" [ngClass]="{ 'make-warn': element.warn }"> {{element.description}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="priority">
         <mat-header-cell *matHeaderCellDef fxFlex="100px"> Prioridad </mat-header-cell>
-        <mat-cell *matCellDef="let element" fxFlex="100px"> {{element.priority}} </mat-cell>
+        <mat-cell *matCellDef="let element" fxFlex="100px" [ngClass]="{ 'make-warn': element.warn }"> {{element.priority}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="date">
         <mat-header-cell *matHeaderCellDef fxFlex="100px"> Fecha </mat-header-cell>
-        <mat-cell *matCellDef="let element" fxFlex="100px"> {{element.date}} </mat-cell>
+        <mat-cell *matCellDef="let element" fxFlex="100px" [ngClass]="{ 'make-warn': element.warn }"> {{element.date}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="status">
         <mat-header-cell *matHeaderCellDef fxFlex="100px"> Estatus </mat-header-cell>
-        <mat-cell *matCellDef="let element" fxFlex="100px"> {{element.status_lavel}} </mat-cell>
+        <mat-cell *matCellDef="let element" fxFlex="100px" [ngClass]="{ 'make-warn': element.warn }"> {{element.status_lavel}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef fxFlex="50px">
             <mat-icon aria-hidden="false" aria-label="Example home icon">preview</mat-icon>
         </mat-header-cell>
-        <mat-cell *matCellDef="let element" fxFlex="50px" style="cursor: pointer;" (click)="showAdd(element)">
+        <mat-cell *matCellDef="let element" fxFlex="50px" style="cursor: pointer;" (click)="showAdd(element)" [ngClass]="{ 'make-warn': element.warn }">
             <mat-icon aria-hidden="false" aria-label="Example home icon">preview</mat-icon>
         </mat-cell>
         </ng-container>

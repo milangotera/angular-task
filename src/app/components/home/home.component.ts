@@ -11,7 +11,8 @@ export interface Task {
   expires: Number;
   date: String;
   status: Boolean;
-  status_lavel: String
+  status_lavel: String,
+  warn: Boolean;
 }
 
 @Component({
@@ -21,12 +22,10 @@ export interface Task {
 })
 export class HomeComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'description', 'priority', 'date', 'status', 'id'];
-  dataSource: Task[] = [];
+  public displayedColumns: string[] = ['name', 'description', 'priority', 'date', 'status', 'id'];
+  public dataSource: Task[] = [];
 
-  milisecunds = new Date().getTime();
-
-  date = new Date();
+  public notification: Boolean = false;
 
   constructor(
     public api: ApiService,
@@ -43,7 +42,14 @@ export class HomeComponent implements OnInit {
     this.api.get('task')
     .then( (success: any) => {
       let tasks : Task[] = [];
+      let milisecunds = new Date().getTime();
+      let notification: Boolean = false;
       success.data.forEach(function (task) {
+        let warn: Boolean = false;
+        if(task.expires - milisecunds <= 3600 * 2 * 1000 && task.status == false){
+          warn = true;
+          notification = true;
+        }
         tasks.push({
           id: task.id,
           name: task.name,
@@ -53,8 +59,10 @@ export class HomeComponent implements OnInit {
           date: new Date(task.expires).toLocaleString(),
           status_lavel: task.status ? 'Hecho' : 'Pendiente',
           status: task.status,
+          warn: warn
         });
-      }); 
+      });
+      this.notification = notification;
       this.dataSource = tasks;
     });
   }
